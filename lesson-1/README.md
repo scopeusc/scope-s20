@@ -13,11 +13,11 @@ How is this different from building a website?  Why would we even want to do thi
 Before we get started with the coding aspect, we need to get a few things set up.  First, make sure that you have a good text editor.  Scope's favorite (Julia's really, but who's doing curriculum) is Visual Studio Code.  It's incredible for debugging.  However, the new MacOS's no longer support it (sigh).  If you're running a different OS (or earlier Apple), get it here:
 https://code.visualstudio.com/Download
 
-Another good editor not supported by current macOS is Atom.  You can review them on your own time, get it here:
+~~Another good editor not supported by current macOS is Atom.  You can review them on your own time, get it here:
 https://atom.io
 
 For everyone running new macOS without a favorite editor, you can download Sublime for now.  Get it here:
-https://www.sublimetext.com
+https://www.sublimetext.com~~
 
 Now, we are going to install Node.js and npm (Node Package Manager).  If you've worked with any other Javascript frameworks before, chances are you already have this downloaded.  Go through these very simple steps to verify it's installed, or install from scratch.
 
