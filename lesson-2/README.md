@@ -2,6 +2,7 @@
 
 ## **First Application**
 **Basic Package Structure**
+
 If you have ever worked with Node.js, you will see that an electron package is essentially identical.  We will start off by creating a folder for our project `first-app`, which will contain three files, `package.json`, `main.js`, and `index.html`.  Structure the folder as below:  
 ```
 first-app/
