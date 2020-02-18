@@ -1,0 +1,14 @@
+{
+  "name": "first-app",
+  "version": "1.0.0",
+  "description": "\"Hello World application\"",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Tommy Trojan",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^8.0.1"
+  }
+}

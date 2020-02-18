@@ -56,7 +56,7 @@ From your app's highest directory `first-app`, run `npm install --save electron`
 This will create and update a `dependencies` field in our JSON.
 
 ## **Build and Render**
-**First Cut main.js**
+**Hello World App**
 
 We will be editing our `main.js` to build our first Electron window.  The first thing we are going to do is require the `electron` module.  This module is what provides all APIs and features of Electron that we will be using.  We do this by storing the module in a `const`, like this:
 
@@ -151,5 +151,38 @@ app.on('activate', () => {
 })
 ```
 
-Now, run `npm start` from your `first-app` directory.  Your app should look like this:
+Now, run `npm start` from your `first-app` directory.  Note that MacOS's and others have different defaults (non-Macs may have a default menu), but your app should look something like this:
 <img width="799" alt="Screen Shot 2020-02-18 at 11 44 44 AM" src="https://user-images.githubusercontent.com/35272150/74772196-65f48980-5244-11ea-87c3-9b12dfc0fd4b.png">
+
+Great!  We have created our first window.  Now, we will be starting to build an actual project.
+
+## **Grocery List App**
+**Menu Bar**
+
+We are going to add a native menu bar to our application, which will allow us to do things like add items to our grocery list and remove them.  In order to do this, we need to import the Electron object `Menu`.  So, in `main.js` change
+`const {app, BrowserWindow} = electron` to
+`const {app, BrowserWindow, Menu} = electron`
+
+Now, we will create a menu template.
+```
+const menuTemplate = [
+    {
+        label: 'File'
+    }
+]
+```
+
+In our `createWindow()` we are actually going to build the menu, and insert in into our html.  Luckily, Electron provides methods to do this without touching our `index.html`
+
+```
+function createWindow() {
+    // a window without the option to resize (we will go over in later lessons)
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    // load index.html into our window
+    mainWindow.loadFile('index.html')
+    // build the menu
+    const mainMenu = Menu.buildFromTemplate(menuTemplate)
+    // insert menu into html
+    Menu.setApplicationMenu(mainMenu)
+}
+```
