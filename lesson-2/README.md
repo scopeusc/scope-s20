@@ -152,7 +152,7 @@ app.on('activate', () => {
 ```
 
 Now, run `npm start` from your `first-app` directory.  Note that MacOS's and others have different defaults (non-Macs may have a default menu), but your app should look something like this:
-<img width="799" alt="Screen Shot 2020-02-18 at 11 44 44 AM" src="https://user-images.githubusercontent.com/35272150/74772196-65f48980-5244-11ea-87c3-9b12dfc0fd4b.png">
+<img width="801" alt="Screen Shot 2020-02-18 at 12 23 40 PM" src="https://user-images.githubusercontent.com/35272150/74774974-93900180-5249-11ea-9079-2abd46d9795c.png">
 
 Great!  We have created our first window.  Now, we will be starting to build an actual project.
 
