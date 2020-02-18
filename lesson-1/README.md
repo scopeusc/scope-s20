@@ -10,13 +10,13 @@ If you've ever created a website, you can get started developing Electron applic
 How is this different from building a website?  Why would we even want to do this?  While a very simple API, Electron is so much more than a web app.  It allows you to access the OS, read and write to the file system, and much more you wouldn't be able to do with just a website.  Let's go!
 
 ## **Setup**
-Before we get started with the coding aspect, we need to get a few things set up.  First, make sure that you have a good text editor.  Scope's favorite (Julia's really, but who's doing curriculum) is Visual Studio Code.  It's incredible for debugging.  However, the new MacOS's no longer support it (sigh).  If you're running a different OS (or earlier Apple), get it here:
+Before we get started with the coding aspect, we need to get a few things set up.  First, make sure that you have a good text editor.  Scope's favorite (Julia's really, but who's doing curriculum) is Visual Studio Code.  It's incredible for debugging.  However, the new MacOS's no longer support it, but there's a way to bypass it.  For non-Mac users, download as usual.  If you're running the new MacOS, then download, and double-click to open.  A window will say '"Visual Studio Code" can't be openedbecause Apple cannot check if for malicious software."  Click 'Show in Finder', then right-click on the download and press open.  Easy!
 https://code.visualstudio.com/Download
 
 ~~Another good editor not supported by current macOS is Atom.  You can review them on your own time, get it here:
-https://atom.io
+https://atom.io~~
 
-For everyone running new macOS without a favorite editor, you can download Sublime for now.  Get it here:
+~~For everyone running new macOS without a favorite editor, you can download Sublime for now.  Get it here:
 https://www.sublimetext.com~~
 
 Now, we are going to install Node.js and npm (Node Package Manager).  If you've worked with any other Javascript frameworks before, chances are you already have this downloaded.  Go through these very simple steps to verify it's installed, or install from scratch.
