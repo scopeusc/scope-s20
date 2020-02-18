@@ -152,3 +152,4 @@ app.on('activate', () => {
 ```
 
 Now, run `npm start` from your `first-app` directory.  Your app should pop up like this:
+<img width="799" alt="Screen Shot 2020-02-18 at 11 44 44 AM" src="https://user-images.githubusercontent.com/35272150/74772196-65f48980-5244-11ea-87c3-9b12dfc0fd4b.png">
