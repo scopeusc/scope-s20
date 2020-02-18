@@ -1,4 +1,4 @@
-# **Lesson 2 - Building Your First Electron App**
+# **Lesson 2 - Building Your First Electron App: Grocery List**
 
 ## **Setup**
 **Basic Package Structure**
@@ -49,7 +49,7 @@ We're going to make one change.  When we develop our app, we want to be able to 
 
 **Installing Electron Locally**
 
-If you've gotten here and are confused, or thinking "if we're installing Electron now, what were we doing all of last week," don't fret!  Last week, we installed Node and Node Package Manager (NPM) which are necessary prerequisites to running Electron.  Now, we will be installing Electron as a development dependency in our app.  There are many ways to install Electron (see here: https://www.electronjs.org/docs/tutorial/installation) but this is the preferred method, because it makes version control and updates a whole lot easier. 
+If you've gotten here and are confused, or thinking "if we're installing Electron now, what were we doing all of last week?" don't fret!  We installed Node and Node Package Manager (NPM) which are necessary prerequisites to running Electron.  Now, we will be installing Electron as a development dependency in our app.  There are many ways to install Electron (see here: https://www.electronjs.org/docs/tutorial/installation) but this is the preferred method, because it makes version control and updates a whole lot easier. 
 
 From your app's highest directory `first-app`, run `npm install --save electron`
 
@@ -58,6 +58,97 @@ This will create and update a `dependencies` field in our JSON.
 ## **Build and Render**
 **First Cut main.js**
 
-We will be editing our `main.js` to build our first Electron window.  The first thing we are going to do is require the `electron` module.  This module is what provides all APIs and features of Electron that we will be using.  We do this by storing the module in a `const`, like this
+We will be editing our `main.js` to build our first Electron window.  The first thing we are going to do is require the `electron` module.  This module is what provides all APIs and features of Electron that we will be using.  We do this by storing the module in a `const`, like this:
 
-`**const** electron = require('electron')`
+`const electron = require('electron');`
+
+Now, we are going to grab some objects from the `electron` module.
+
+`const {app, BrowserWindow} = electron`
+
+The `app` object is the top-level controller of our application.  It loads and creates windows, etc.  The `BrowserWindow` object is, well... a browser window.  It will allow us to then load and render our page.
+
+At the bottom of our `main.js`, we will write
+
+`app.whenReady().then(createWindow)`
+
+In Electron, we wait for the app to be ready, and when it is, we load our windows.  This is saying, when the app is ready, run a function called `createWindow`.  Before we define that function, we will create an instance of of `BrowserWindow`.
+
+`let mainWindow`
+
+This will be customized inside the function, which we define now.
+
+```
+function createWindow() {
+    // a window without the option to resize (we will go over in later lessons)
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    // load index.html into our window
+    mainWindow.loadFile('index.html')
+}
+```
+
+Now, let's actually create our `index.html` that will load!  Since we are going to be creating a Grocery List next, we will have the most basic HTML in the file to demonstrate.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Grocery List</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+    </body>
+</html>
+```
+
+Now, at the bottom of `main.js` add these functions:
+```
+// Quit when all windows are closed.
+app.on('window-all-closed', () => {
+  // On macOS it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('activate', () => {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
+})
+```
+
+The function purposes are explained inline, but they are generally for aiding common MacOS functionality.  Your whole `main.js` should look like this:
+
+```
+const electron = require('electron')
+const {app, BrowserWindow} = electron
+
+let mainWindow
+
+function createWindow() {
+    // the size of a Chrome window, without the option to resize (we will go over in later lessons)
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    // load index.html into our window
+    mainWindow.loadFile('index.html')
+}
+app.whenReady().then(createWindow)
+
+// Quit when all windows are closed.
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
+})
+```
+
+Now, run `npm start` from your `first-app` directory.  Your app should pop up like this:
