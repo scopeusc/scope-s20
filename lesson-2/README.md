@@ -1,6 +1,6 @@
 # **Lesson 2 - Building Your First Electron App**
 
-## **First Application**
+## **Setup**
 **Basic Package Structure**
 
 If you have ever worked with Node.js, you will see that an electron package is essentially identical.  We will start off by creating a folder for our project `first-app`, which will contain three files, `package.json`, `main.js`, and `index.html`.  Structure the folder as below:  
@@ -32,7 +32,12 @@ This will automatically create a JSON that should look like this:
 }
 ```
 **Installing Electron Locally**
+If you've gotten here and are confused, or thinking "if we're installing Electron now, what were we doing all of last week," don't fret!  Last week, we installed Node and Node Package Manager (NPM) which are necessary prerequisites to running Electron.  Now, we will be installing Electron as a development dependency in our app.  There are many ways to install Electron (see here: https://www.electronjs.org/docs/tutorial/installation) but this is the preferred method, because it makes version control and updates a whole lot easier. 
 
+From your app's highest directory `first-app`, run `npm install --save-dev electron`
+
+## **Build and Render**
+**First Cut main.js**
 
 There is one more thing we need to add here.  To start our Electron app, we should be able to run `npm start`.  So, we need to add a start command to our JSON.  Add `"start": "electron ."` under `"scripts"`.
 
