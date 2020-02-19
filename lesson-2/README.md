@@ -273,7 +273,7 @@ let addWindow
     click() {
         createAddWindow()
     }
-}
+},
 ...
 
 function createAddWindow() {
@@ -475,7 +475,7 @@ Finally, we are going to implement `Clear Items`.  We are going to add an onclic
     click() {
         mainWindow.webContents.send('item:clear')
     }
-}
+},
 ```
 
 Now, we go back to `index.html` to catch this clear item.  Take a few minutes, and try to add a listener for `item:clear` which gets rid of the list elements.
