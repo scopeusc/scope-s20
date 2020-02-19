@@ -327,7 +327,9 @@ function createWindow() {
 ```
 
 Question: Why did we not add an accelerator here?
+
 ...
+
 Answer: Because the only way this listener will be called is if the main window is shut and not the smaller one, which can only occur if someone manually X's out of one and not the other.  Aka if they were to Cmd + Q, both would already close automatically.
 
 As another optimization, we want to nullify our addWindow once it is closed.  We can do this in `createAddWindow()` by adding an on close listener again.
