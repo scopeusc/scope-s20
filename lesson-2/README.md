@@ -204,30 +204,8 @@ function createWindow() {
 ```
 Now, run `npm start`, and you should see only the File option, with the three submenu items we created.  
 
-Except, oh the woes of Apple, there is a problem on a Mac.  When you load this menuTemplate without the empty curly braces at the top, all the submenu options appear under the Electron tab, **not** the File.  Who knows why, but for Macs, you have to add an empty item beforehand.  However, if we do this simply by adding empty braces to the menuTemplate, it shifts it over for non-Macs, which we don't want.  
+Except, oh the woes of Apple, there is a problem on a Mac.  When you load this menuTemplate without the empty curly braces at the top, all the submenu options appear under the Electron tab, **not** the File.  Challenge: try to figure out how to shift in an empty menu header, so `File` will appear on Macs.
 
-So, we are going to add an `if` statement in `createWindow` that says, if we are on a Mac, prepend `menuTemplate` with an empty item, otherwise do nothing.  We will do this with `unshift` which is an array operator that allows you to prepend the array.  Make sure you add it **before** you build the menu.
-
-```
-function createWindow() {
-    // a window without the option to resize (we will go over in later lessons)
-    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false, webPreferences: {nodeIntegration: true}})
-
-    // load index.html into our window
-    mainWindow.loadFile('index.html')
-
-    // add empty item for macs only
-    if (process.platform == 'darwin') {
-        menuTemplate.unshift({})
-    }
-
-    // build the menu
-    const mainMenu = Menu.buildFromTemplate(menuTemplate)
-
-    // insert menu into html
-    Menu.setApplicationMenu(mainMenu)
-}
-```
 
 The first functionality we will add will be for `Quit`.  This is relatively easy, so take a couple minutes and try to find a way to do it on your own.
 
