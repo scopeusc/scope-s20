@@ -278,7 +278,7 @@ let addWindow
 
 function createAddWindow() {
     addWindow = new BrowserWindow({width: 400, height: 300, resizable: false})
-    c
+    addWindow.loadFile('addWindow.html')
 }
 
 ```
