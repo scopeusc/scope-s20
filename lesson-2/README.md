@@ -70,7 +70,7 @@ The `app` object is the top-level controller of our application.  It loads and c
 
 At the bottom of our `main.js`, we will write
 
-`app.whenReady().then(createWindow)`
+`app.on('ready', createWindow)`
 
 In Electron, we wait for the app to be ready, and when it is, we load our windows.  This is saying, when the app is ready, run a function called `createWindow`.  Before we define that function, we will create an instance of of `BrowserWindow`.
 
@@ -135,7 +135,7 @@ function createWindow() {
     // load index.html into our window
     mainWindow.loadFile('index.html')
 }
-app.whenReady().then(createWindow)
+app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -159,7 +159,9 @@ Great!  We have created our first window.  Now, we will be starting to build an 
 ## **Grocery List App**
 **Menu Bar**
 
-We are going to add a native menu bar to our application, which will allow us to do things like add items to our grocery list and remove them.  In order to do this, we need to import the Electron object `Menu`.  So, in `main.js` change
+We are going to add a native menu bar to our application, which will allow us to do things like add items to our grocery list and remove them.  In Electron, menu bars are simple arrays.  You can nest arrays within arrays to create submenus, and add functionality with onclick functions to each element.
+
+In order to do this, we need to import the Electron object `Menu`.  So, in `main.js` change
 `const {app, BrowserWindow} = electron` to
 `const {app, BrowserWindow, Menu} = electron`
 
@@ -201,7 +203,7 @@ Now, if we run it, you should see only the File option, with the three submenu i
 
 ...
 
-Ok, so there are two main components to our `Quit`.  The first is obvious, if you click on it you want to quit the app.  The part is we want to add keyboard shortcuts to be able to exit, in particular, Cmd + Q on a Mac, and Ctrl + Q on others.  Let's start with the click.  We want to add an onclick event to our label `Quit`, and can do this really easily with Electron.
+There are two main components to our `Quit`.  The first is obvious, if you click on it you want to quit the app.  The second part adding keyboard shortcuts to exit, in particular, Cmd + Q on a Mac, and Ctrl + Q on others.  Let's start with the click.  We want to add an onclick event to our label `Quit`, and can do this really easily with Electron.
 
 ```
 {
@@ -226,4 +228,47 @@ A comma separated `click()` allows you to define onclick functions inline for ma
 
 A couple things to note.  `process.platform` refers to what OS your machine is running.  If you're curious, you can run `node` from your terminal, then `process.platform` in the node shell to see what you're running.  Also, we are using a ternary operator here, which simply says create an accelerator with the shortcut `Cmd + Q` if we are on a Mac, and `Ctrl + Q` otherwise.  Just one way electron makes cross-compilation super simple.
 
+Next, let's move onto `Add Item`.  When we click, we want another, smaller window to appear that will allow us to add an item to our grocery list.  Since we have gone over how to create a window (see createWindow), and use onclick functionality, try to get an empty window to pop up when you click `Add Item` (note: create a function called createAddWindow())
+
+...
+
+Hopefully you were able to get this working.  Let's look at code for it together.
+
+```
+...
+{
+    label: 'Add Item',
+    click() {
+        createAddWindow()
+    }
+}
+...
+
+function createAddWindow() {
+    let addWindow = new BrowserWindow({width: 400, height: 300, resizable: false})
+}
+
+```
+
+This will bring up a blank page, just like we wanted.  Now, we want to create another html page to load into addWindow.  So, create a new file called `addWindow.html`.  What we want is to have a title/heading of Add Item, and a form where you can submit an item.  Take some time and do this on your own (if you're not familiar with HTML, consult W3 Schools or a neighbor to try and do this!)
+
+```
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Item</title>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label>Enter Item</label>
+                <input type="text" id="item" autofocus>
+            </div>
+            <button type="submit">Add Item</button>
+        </form>
+    </body>
+</html>
+```
+
+Here is the basic format.  We have a form, and a submit button.  Note that we will be using the item ID later on, so please add that to your input if not already there.  Try out your app by running `npm start` again, and make sure that you are able to open the window.  There's something weird here.  If you close our main window, but not the add window, the app 
 
