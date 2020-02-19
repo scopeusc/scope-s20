@@ -400,7 +400,7 @@ ipcMain.on('item:add', function(event, item){
 
 ```
 
-Now that we have caught the item in our main process, we have to get it in the main html page, our `index.js`.  We will bring in Electron and `ipcRenderer` just like before in our `script` tags.  We also want to add each item to a list when it's caught.  So, let's add a set of `<ul></ul>` tags below our heading.  We can leave these blank, because we will update it dynamically in our JavaScript tags.  We now create a listener function with `ipcRenderer` that says, once an item is received from the main process, execute the function. 
+Now that we have caught the item in our main process, we have to get it in the main html page, our `index.html`.  We will bring in Electron and `ipcRenderer` just like before in our `script` tags.  We also want to add each item to a list when it's caught.  So, let's add a set of `<ul></ul>` tags below our heading.  We can leave these blank, because we will update it dynamically in our JavaScript tags.  We now create a listener function with `ipcRenderer` that says, once an item is received from the main process, execute the function. 
 
 ```
 <!DOCTYPE html>
@@ -434,7 +434,7 @@ ipcRenderer.on('item:add', function(event, item){
 });
 ```
 
-Your `addWindow.html` should look like this:
+Your `index.html` should look like this:
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -450,6 +450,7 @@ Your `addWindow.html` should look like this:
             const {ipcRenderer} = electron;
             const ul = document.querySelector('ul');
 
+            // catch add item
             ipcRenderer.on('item:add', function(event, item){ 
                 const li = document.createElement('li');
                 const itemText = document.createTextNode(item);
@@ -462,3 +463,43 @@ Your `addWindow.html` should look like this:
 ```
 
 Run `npm start`.  You should now be able to add to the list, and see it updated in the main screen.
+
+Finally, we are going to implement `Clear Items`.  We are going to add an onclick event to the `Clear Items` tab that sends an event `item:clear` to `index.html`.
+
+```
+{
+    label: 'Clear Items',
+    click() {
+        mainWindow.webContents.send('item:clear')
+    }
+}
+```
+
+Now, we go back to `index.html` to catch this clear item.  Take a few minutes, and try to add a listener for `item:clear` which gets rid of the list elements.
+
+...
+
+Let's do it together now.
+
+```
+<script>
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
+    const ul = document.querySelector('ul');
+
+    // catch add item
+    ipcRenderer.on('item:add', function(event, item){ 
+        const li = document.createElement('li');
+        const itemText = document.createTextNode(item);
+        li.appendChild(itemText);
+        ul.appendChild(li);
+    });
+
+    // catch clear item
+    ipcRenderer.on('item:clear', function(event, item){
+        ul.innerHTML = '';
+    });
+</script>
+```
+
+That's all we will be going over today.  Next week, we will continue working on this project, and will add styling and additional functionality.  Try and see how you can improve on it before then.
