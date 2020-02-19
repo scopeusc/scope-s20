@@ -305,7 +305,7 @@ This will bring up a blank page, just like we wanted.  Make sure you have define
 Here is the basic format.  We have a form, and a submit button.  Note that we will be using the item ID later on, so please add that to your input if not already there.  Try out your app by running `npm start` again, and make sure that you are able to open the window.  There's something weird here.  If you close our main window, but not the add window, the app stays open.  I want you to fix this.  I'll give you a hint -- you have to create a listener function in `createWindow` to see if it's closed.  Take a few minutes.
 
 ...
-
+```
 function createWindow() {
     // a window without the option to resize (we will go over in later lessons)
     mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
@@ -324,6 +324,7 @@ function createWindow() {
         app.quit()
     })
 }
+```
 
 Question: Why did we not add an accelerator here?
 ...
