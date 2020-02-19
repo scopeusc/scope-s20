@@ -167,7 +167,18 @@ Now, we will create a menu template.
 ```
 const menuTemplate = [
     {
-        label: 'File'
+        label: 'File',
+        submenu: [
+            {
+                label: 'Add Item'
+            },
+            {
+                label: 'Clear Items'
+            },
+            {
+                label: 'Quit'
+            }
+        ]
     }
 ]
 ```
@@ -186,3 +197,33 @@ function createWindow() {
     Menu.setApplicationMenu(mainMenu)
 }
 ```
+Now, if we run it, you should see only the File option, with the three submenu items we created.  The first functionality we will add will be for `Quit`.  This is relatively easy, so take a couple minutes and try to find a way to do it on your own.
+
+...
+
+Ok, so there are two main components to our `Quit`.  The first is obvious, if you click on it you want to quit the app.  The part is we want to add keyboard shortcuts to be able to exit, in particular, Cmd + Q on a Mac, and Ctrl + Q on others.  Let's start with the click.  We want to add an onclick event to our label `Quit`, and can do this really easily with Electron.
+
+```
+{
+    label: 'Quit',
+    click() {
+        app.quit()
+    }
+}
+```
+
+A comma separated `click()` allows you to define onclick functions inline for many elements in Electron.  Now, for hotkeys.  An element called `accelerator` allows us to define hotkeys as strings (e.g. you can simply create an accelerator, and write something like `Cmd + Q`, and it registers your meaning).  Let's look.
+
+```
+{
+    label: 'Quit',
+    accelerator: process.platform == 'darwin' ? 'Cmd + Q' : 'Ctrl + Q',
+    click() {
+        app.quit()
+    }
+}
+```
+
+A couple things to note.  `process.platform` refers to what OS your machine is running.  If you're curious, you can run `node` from your terminal, then `process.platform` in the node shell to see what you're running.  Also, we are using a ternary operator here, which simply says create an accelerator with the shortcut `Cmd + Q` if we are on a Mac, and `Ctrl + Q` otherwise.  Just one way electron makes cross-compilation super simple.
+
+
