@@ -278,6 +278,7 @@ let addWindow
 
 function createAddWindow() {
     addWindow = new BrowserWindow({width: 400, height: 300, resizable: false})
+    c
 }
 
 ```
@@ -337,6 +338,7 @@ As another optimization, we want to nullify our addWindow once it is closed.  We
 ```
 function createAddWindow() {
     addWindow = new BrowserWindow({width: 400, height: 300, resizable: false})
+    addWindow.loadFile('addWindow.html')
     addWindow.on('close', function(){
         addWindow = null
     })
