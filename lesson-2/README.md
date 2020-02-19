@@ -165,7 +165,7 @@ In order to do this, we need to import the Electron object `Menu`.  So, in `main
 `const {app, BrowserWindow} = electron` to
 `const {app, BrowserWindow, Menu} = electron`
 
-Now, we will create a menu template.
+Now, we will create a menu template.  This should be outside our function `createWindow()`
 ```
 const menuTemplate = [
     {
