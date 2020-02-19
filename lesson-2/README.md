@@ -60,7 +60,7 @@ This will create and update a `dependencies` field in our JSON.
 
 We will be editing our `main.js` to build our first Electron window.  The first thing we are going to do is require the `electron` module.  This module is what provides all APIs and features of Electron that we will be using.  We do this by storing the module in a `const`, like this:
 
-`const electron = require('electron');`
+`const electron = require('electron')`
 
 Now, we are going to grab some objects from the `electron` module.
 
