@@ -81,7 +81,7 @@ This will be customized inside the function, which we define now.
 ```
 function createWindow() {
     // a window without the option to resize (we will go over in later lessons)
-    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false, webPreferences: {nodeIntegration: true}})
     // load index.html into our window
     mainWindow.loadFile('index.html')
 }
@@ -131,7 +131,7 @@ let mainWindow
 
 function createWindow() {
     // the size of a Chrome window, without the option to resize (we will go over in later lessons)
-    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false, webPreferences: {nodeIntegration: true}})
     // load index.html into our window
     mainWindow.loadFile('index.html')
 }
@@ -190,7 +190,7 @@ In our `createWindow()` we are actually going to build the menu, and insert in i
 ```
 function createWindow() {
     // a window without the option to resize (we will go over in later lessons)
-    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false, webPreferences: {nodeIntegration: true}})
 
     // load index.html into our window
     mainWindow.loadFile('index.html')
@@ -211,7 +211,7 @@ So, we are going to add an `if` statement in `createWindow` that says, if we are
 ```
 function createWindow() {
     // a window without the option to resize (we will go over in later lessons)
-    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false, webPreferences: {nodeIntegration: true}})
 
     // load index.html into our window
     mainWindow.loadFile('index.html')
@@ -277,7 +277,7 @@ let addWindow
 ...
 
 function createAddWindow() {
-    addWindow = new BrowserWindow({width: 400, height: 300, resizable: false})
+    addWindow = new BrowserWindow({width: 400, height: 300, resizable: false, webPreferences: {nodeIntegration: true}})
     addWindow.loadFile('addWindow.html')
 }
 
@@ -309,7 +309,7 @@ Here is the basic format.  We have a form, and a submit button.  Note that we wi
 ```
 function createWindow() {
     // a window without the option to resize (we will go over in later lessons)
-    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false, webPreferences: {nodeIntegration: true}})
 
     // load index.html into our window
     mainWindow.loadFile('index.html')
@@ -337,7 +337,7 @@ As another optimization, we want to nullify our addWindow once it is closed.  We
 
 ```
 function createAddWindow() {
-    addWindow = new BrowserWindow({width: 400, height: 300, resizable: false})
+    addWindow = new BrowserWindow({width: 400, height: 300, resizable: false, webPreferences: {nodeIntegration: true}})
     addWindow.loadFile('addWindow.html')
     addWindow.on('close', function(){
         addWindow = null
