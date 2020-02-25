@@ -201,5 +201,5 @@ function createWindow() {
     // insert menu into html
     Menu.setApplicationMenu(mainMenu)
 }
-
+```
 That's all we will be going over today.  Next week, we will continue working on this project, and add functionality.  Try and see how you can improve on it before then.
