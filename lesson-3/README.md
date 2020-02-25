@@ -2,7 +2,7 @@
 
 # Quick Recap #
 
-Now, run `npm start`, and you should see only the File option, with the three submenu items we created.  
+From the project folder we created last week, run `npm start`, and you should see only the File option, with the three submenu items we created.  
 
 Except, oh the woes of Apple, there is a problem on a Mac.  When you load this menuTemplate without the empty curly braces at the top, all the submenu options appear under the Electron tab, **not** the File.  Challenge: try to figure out how to shift in an empty menu header, so `File` will appear on Macs.
 
