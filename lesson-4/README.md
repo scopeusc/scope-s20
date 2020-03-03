@@ -145,7 +145,7 @@ Let's get rid of the ugly title and have a nice lookin' nav bar at the top by ad
 </nav>
 ```
 
-Now when we do Add Item, the text looks all ugly and unformatted ): We can fix that by adding class names to the list items to give them more ~aesthetic~.
+Now when we do Add Item, the text looks all ugly and unformatted ): We can fix that by adding class names to the list items to give them more aesthetic.
 
 In the script where we're rendering the list items, we'll fix the formatting. Your ipcRenderer should look like this now:
 
