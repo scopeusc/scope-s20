@@ -135,7 +135,7 @@ Add the following to the <head> of both your HTML files, like this:
 Now when you run `npm start`,  you can see the different changes that MaterializeCSS has already made. Let's make some more changes!!
 
 
-Let's get rid of the ugly title and have a nice lookin' nav bar at the top by adding this <nav> tag in place of the <h1> tag we had before:
+Let's get rid of the ugly title and have a nice lookin' nav bar at the top by adding this `<nav>` tag in place of the `<h1>` tag we had before:
 
 ```
 <nav>
