@@ -9,6 +9,6 @@
   "author": "Tommy Trojan",
   "license": "ISC",
   "dependencies": {
-    "electron": "^8.0.1"
+    "electron": "^13.6.6"
   }
 }
